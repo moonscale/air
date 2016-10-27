@@ -2,16 +2,14 @@
 
 set -xeufo pipefail
 
-export LOCALDIR=`dirname $0`
-export WINEPREFIX=/wineprefix
-export WINEARCH=win32
-export WINEDEBUG=-all
+LOCALCMD=`realpath $0`
+LOCALDIR=`dirname $LOCALCMD`
 
 function convert_argv {
     argv=""
     while (($#)); do
         if [ -e $1 ] ; then
-            arg=`winepath -w $1`
+            arg=`WINEDEBUG=-all winepath -w $1`
         else
             arg=$1
         fi
@@ -21,7 +19,7 @@ function convert_argv {
     echo $argv
 }
 
-wine $LOCALDIR/adl.exe `convert_argv $@`
+WINEDEBUG=-all wine $LOCALDIR/adl.exe `convert_argv $@`
 
 ret=$?
 
