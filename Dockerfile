@@ -1,7 +1,7 @@
 FROM maven:3.2-jdk-8
 
-ENV AIR_SDK_VERSION=23.0.0.57
-ENV AIR_SDK_DOWNLOAD_URL=http://fpdownload.macromedia.com/air/win/download/23.0/AdobeAIRSDK.zip
+ENV AIR_SDK_VERSION=25.0.0.134
+ENV AIR_SDK_DOWNLOAD_URL=http://fpdownload.macromedia.com/air/win/download/25.0/AdobeAIRSDK.zip
 
 # Install Wine, Xvfb & AIR SDK
 RUN dpkg --add-architecture i386 \
